@@ -1,0 +1,75 @@
+/*
+Kreirati klasu RekreativniPlaninar koja nasleđuje klasu Planinar. Klasa dodatno pamti još neke informacije koje se ne mogu menjati
+ nakon postavljanja u konstuktoru (znaci, nemaju setere):
+●	težinu opreme (kg) koju nosi (celobrojna je vrednost npr: 20kg)
+●	naziv okruga odakle je rekreativni planinar.
+●	maksimalni uspon koji planinar može da savlada bez opreme (npr: 2000m)
+●	napraviti konstruktor
+●	da li će rekreativni planinar uspešno popeti na planinu zavisi da li je njegov najveći uspon manji od visine planine,
+s tim da oprema dodatno otežava penjanje i za svaki kilogram opreme koji nosi može da pređe 50 metara manje.
+●	rekeativci placaju clanarinu u iznosu od 1000 rsd
+●	metoda koja ispisuje podatke o planinaru ispisuje ih u sledećem formatu:
+Rekreativac, id: id
+ ime: ime prezime Okrug: okrug
+ */
+
+
+public class RekreativniPlaninar extends Planinar {
+    private int tezinaOpreme;
+    private String okrug;
+    private double maksimalniUsponBezOpreme;
+
+    public RekreativniPlaninar(int ID, String imeIPrezime, int tezinaOpreme, String okrug, double maksimalniUsponBezOpreme) {
+        super(ID, imeIPrezime);
+        this.tezinaOpreme = tezinaOpreme;
+        this.okrug = okrug;
+        this.maksimalniUsponBezOpreme = maksimalniUsponBezOpreme;
+    }
+
+    public int getTezinaOpreme() {
+        return tezinaOpreme;
+    }
+
+    public String getOkrug() {
+        return okrug;
+    }
+
+    public double getMaksimalniUsponBezOpreme() {
+        return maksimalniUsponBezOpreme;
+    }
+
+
+    @Override
+    public boolean uspesanUspon(Planina p) {
+        return (maksimalniUsponBezOpreme - (tezinaOpreme * 50)) < p.getVisina();
+    }
+
+    @Override
+    public double clanarina() {
+        return 1000;
+    }
+
+    @Override
+    public void stampaj() {
+
+    }
+
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Rekreativac, id: ").append(getID()).append("\n");
+        sb.append("ime: ").append(getImeIPrezime()).append("\n");
+        sb.append("Okrug: ").append(getOkrug()).append("\n");
+
+                return sb.toString();
+    }
+
+
+}
+
+
+
+
+

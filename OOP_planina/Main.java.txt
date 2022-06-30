@@ -1,0 +1,46 @@
+/*
+Kreirati glavnu klasu I u njoj:
+●	instancirati jednu planinu
+●	napraviti niz koji ce sadrzati tri rekrativna planinara I tri alpiniste
+●	ispisati podatke o svim planinarima I za svakog od planinara ispisati da li ce se popeti na instanciranu planinu
+●	ispisati kolika je zbir svih clanarina planinara iz niza
+
+ */
+
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.ArrayList;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Planina p = new Planina("Zlatibor", "Srbija", 1500);
+        RekreativniPlaninar rp1 = new RekreativniPlaninar(125, "Petar Petrovic", 10, "Branicevski", 1200);
+        RekreativniPlaninar rp2 = new RekreativniPlaninar(129, "Marko Markovic", 15, "Pirotski", 2000);
+        RekreativniPlaninar rp3 = new RekreativniPlaninar(137, "Ivan Ivanovic", 17, "Pirotski", 1800);
+        Alpinista al1 = new Alpinista(235, "Milan Milanovic", 20);
+        Alpinista al2 = new Alpinista(236, "Milan Markovic", 35);
+        Alpinista al3 = new Alpinista(240, "Milan Markovic", 45);
+
+
+        ArrayList<Planinar> planinari = new ArrayList<Planinar>();
+        planinari.add(rp1);
+        planinari.add(rp2);
+        planinari.add(rp3);
+        planinari.add(al1);
+        planinari.add(al2);
+        planinari.add(al3);
+        System.out.println(planinari);
+
+
+
+
+        }
+
+
+
+
+    }
+
+
+

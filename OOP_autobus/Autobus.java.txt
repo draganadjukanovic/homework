@@ -1,0 +1,173 @@
+/*Autobus poseduje naziv, vozaca, cenu karte i putnika koji se njime voze
+(otežana verzija: listu putnika). Naziv i cena karte i zadaju se prilikom kreiranja.
+Moguce je dodati/ukloniti putnika kao i vozaca.
+(Otežana verzija: Moguce je naplatiti kartu putnicima samo ako je vozac prisutan.)
+
+ */
+
+import java.util.ArrayList;
+
+public class Autobus {
+
+    private String naziv;
+    private Vozac vozac;
+    private double cenaKarte;
+    private ArrayList<Putnik> putnici;
+
+    public Autobus(String naziv, Vozac vozac, double cenaKarte, ArrayList<Putnik> putnici) {
+        this.naziv = naziv;
+        this.vozac = vozac;
+        this.cenaKarte = cenaKarte;
+        this.putnici = putnici;
+    }
+
+    public Autobus(String naziv, double cenaKarte) {
+        this.naziv = naziv;
+        this.cenaKarte = cenaKarte;
+        this.putnici = new ArrayList<>();
+    }
+
+    public Autobus() {
+        this.putnici = new ArrayList<>();
+    }
+
+    public String getNaziv() {
+        return naziv;
+    }
+
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
+    }
+
+    public Vozac getVozac() {
+        return vozac;
+    }
+
+    public void setVozac(Vozac vozac) {
+        this.vozac = vozac;
+    }
+
+    public double getCenaKarte() {
+        return cenaKarte;
+    }
+
+    public void setCenaKarte(double cenaKarte) {
+        this.cenaKarte = cenaKarte;
+    }
+
+    public ArrayList<Putnik> getPutnici() {
+        return putnici;
+    }
+
+    public void setPutnici(ArrayList<Putnik> putnici) {
+        this.putnici = putnici;
+    }
+
+    public void dodajPutnika(Putnik p){
+        putnici.add(p);
+    }
+
+    public void dodajPutnika(Putnik p, int i){
+        putnici.add(i, p);
+    }
+
+
+    public boolean daLisuIstiPutnici(Putnik p, Putnik p2) {
+        return p.getIme().equals(p2.getIme()) && p.getPrezime().equals(p2.getPrezime()) && p.getNovac() == p2.getNovac();
+    }
+
+    public void ukloniPutnika(Putnik p) {
+        for (int i = 0; i < putnici.size(); i++) {
+            Putnik trenutni = putnici.get(i);
+            if (daLisuIstiPutnici(trenutni, p)) {
+                putnici.remove(trenutni);
+            }
+        }
+    }
+
+    public void ukloniPutnika(int i) {
+        if (i >= 0 && i <= putnici.size())
+            putnici.remove(i);
+    }
+    
+    
+
+    public void dodajVozaca(Vozac v){
+        if(vozac == null){
+            vozac = v;
+        }
+        else{
+            System.out.println("Autobus vec ima vozaca");
+        }
+    }
+
+    public void ukloniVozaca(Vozac v){
+        if(vozac != null){
+            vozac = null;
+        }
+        else{
+            System.out.println("Nema vozaca u autobusu koji moze biti uklonjen");
+        }
+    }
+
+    public void naplatiKartu() {
+        if (vozac != null) {
+            for (Putnik trenutni : putnici) {
+                double novac = trenutni.getNovac();
+                novac -= cenaKarte;
+                trenutni.setNovac(novac);
+            }
+        }
+    }
+
+
+}
+
+
+    public void dodajPutnika(Putnik p){
+        putnici.add(p);
+    }
+
+    public void dodajPutnika(Putnik p, int i){
+        putnici.add(i, p);
+    }
+
+    //dodaj i sa int i
+
+    public void ukloniPutnika(Putnik putnik){
+        for(Putnik p : getPutnici()){
+            if(p.getIme().equals(putnik.getIme()) && p.getPrezime().equals(putnik.getPrezime())
+                    && p.getNovac() == putnik.getNovac()) {
+                putnici.remove(putnik);
+            }
+    }
+
+    }
+
+    public void dodajVozaca(Vozac v){
+        if(vozac == null){
+            vozac = v;
+        }
+        else{
+            System.out.println("Autobus vec ima vozaca");
+        }
+    }
+
+    public void ukloniVozaca(Vozac v){
+        if(vozac != null){
+            vozac = null;
+        }
+        else{
+            System.out.println("Nema vozaca u autobusu koji moze biti uklonjen");
+        }
+    }
+
+   // public void naplatiKartu(){
+        //if (vozac != null){
+
+
+       // }
+        // }
+
+
+}

@@ -1,0 +1,42 @@
+/*
+Putnik je covek koji poseduje novac. Inicijalno poseduje odredjenu kolicinu novca koja mu se zadaje prilikom kreiranja.
+Odredjena svota novca moze da mu se doda i/ili oduzme. (otežana verzija: gde je potrebno vratiti indikator uspešnosti)
+ */
+
+public class Putnik extends Covek {
+
+    private double novac;
+
+    public Putnik(String ime, String prezime, double novac) {
+        super(ime, prezime);
+        this.novac = novac;
+    }
+
+    public Putnik(double novac) {
+        this.novac = novac;
+    }
+
+    public double getNovac() {
+        return novac;
+    }
+
+    public void setNovac(double novac) {
+        this.novac = novac;
+    }
+
+    public void dodajNovac(double iznosZaDodavanje){
+        novac += iznosZaDodavanje;
+    };
+
+    public void oduzmiNovac(double iznosZaOduzimanje){
+        if(!(iznosZaOduzimanje > novac)){
+            novac -= iznosZaOduzimanje;
+        }
+        else{
+            System.out.println("Iznos za oduzimanje prekoracuje iznos koji putnik ima.");
+            novac = novac;
+        }
+
+
+    }
+}

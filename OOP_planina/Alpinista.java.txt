@@ -1,0 +1,60 @@
+/*
+Kreirati klasu Alpinista koja nasleđuje klasu Planinar. Klasa sadrži atribut koji pamti koliko poena je alpinista ostvario
+ (celobrojna vrednost) i poeni se mogu menjati (znaci, postojace seter). Napraviti konstruktor.
+ Alpinista može da savlada sve uspone do 4000 metara, placa clanarinu u iznosu od 1500 pritom za svaki poen ima popust od 50,
+
+ a informacije o alpinisti se ispisuju u formatu:
+Alpinista, id: id
+ime: ime i prezime
+Broj poena: poeni
+ */
+
+public class Alpinista extends Planinar {
+    int osvojeniPoeni;
+
+
+    public Alpinista(int ID, String imeIPrezime, int osvojeniPoeni) {
+        super(ID, imeIPrezime);
+        this.osvojeniPoeni = osvojeniPoeni;
+
+    }
+
+    public void setOsvojeniPoeni(int osvojeniPoeni) {
+        this.osvojeniPoeni = osvojeniPoeni;
+    }
+
+
+    @Override
+    public boolean uspesanUspon(Planina p) {
+
+        return false;
+    }
+
+    @Override
+    public double clanarina() {
+        double cl = 0;
+        if(osvojeniPoeni * 50 <= 1500){
+            cl = 1500 - (osvojeniPoeni * 50);
+        }
+        else{
+            cl = 0;
+        }
+
+        return cl;
+    }
+
+    @Override
+    public void stampaj() {
+
+    }
+
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Alpinista, id: ").append(getID()).append("\n");
+        sb.append("ime: ").append(getImeIPrezime()).append("\n");
+        sb.append("Broj poena: ").append(osvojeniPoeni).append("\n");
+        return sb.toString();
+    }
+}
